@@ -5,10 +5,20 @@ client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
-prompt = '''
-Create a grocery shopping list for a breakfast with serving sizes for 3 teens.
-The meal must be peanut-free and have a vegetarian option.
-The budget for the ingredients is $50.
+serving_size = '''
+3 teens
+'''
+
+diet_details = '''
+peanut-free and have a vegetarian option
+'''
+budget = '''
+$50
+'''
+prompt = f'''
+Create a grocery shopping list for a breakfast with serving sizes for {serving_size}.
+The meal must be {diet_details}.
+The budget for the ingredients is {budget}.
 With this information, choose an appropriate dish and make one shopping list that shows each ingredient
 needed for the dish , each ingredient's cost, and the overall cost compared to the budget.
 Keep in mind if more units of each ingredient must be bought for larger servings.
@@ -16,7 +26,7 @@ Then include the recipe for the chosen dish.
 If it is expected that there are more ingredients left over than what is included in the serving,
 suggest other dishes that can be made with the left over ingredients. 
 
-Format the information like so:
+Format the information using JSON in an order like so:
 
 The dish chosen (the amount of servings)
 
@@ -36,7 +46,9 @@ chat_completion = client.chat.completions.create(
             "content": prompt,
         }
     ],
+
     model="gpt-3.5-turbo",
+    response_format={"type": "json_object"},
 )
 
 print(chat_completion.choices[0].message.content)
