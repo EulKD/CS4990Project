@@ -26,7 +26,7 @@ Then include the recipe for the chosen dish.
 If it is expected that there are more ingredients left over than what is included in the serving,
 suggest other dishes that can be made with the left over ingredients. 
 
-Format the information using JSON in an order like so:
+Format the information using JSON lists in an order like so:
 
 The dish chosen (the amount of servings)
 
