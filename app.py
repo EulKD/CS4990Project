@@ -1,13 +1,16 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 from main import gen_list
 
 app = Flask(__name__)
 
 @app.route('/test')
+@cross_origin()
 def hello():
     return "success"
 
 @app.route('/generate', methods=['GET', 'POST'])
+@cross_origin()
 def generate():
     data = request.get_json  # Get the data sent in the POST request
     
