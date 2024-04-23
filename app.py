@@ -3,26 +3,25 @@ from flask_cors import CORS, cross_origin
 from main import gen_list
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/test')
 @cross_origin()
 def hello():
-    return "success"
+    return "Success"
 
-@app.route('/generate', methods=['GET', 'POST'])
+@app.route('/generate', methods=['POST'])
 @cross_origin()
 def generate():
-    data = request.get_json  # Get the data sent in the POST request
+    data = request.json
     
-    # Extract the inputs for the gen_list method from the data
     serving_size = data.get('serving_size')
     diet_details = data.get('diet_details')
     budget = data.get('budget')
 
-    # Call your function with the data
     result = gen_list(serving_size, diet_details, budget)
 
-    result = {
+    data = {
         "dish": "Oatmeal with Fruit Toppings (4 servings)",
         "shopping_list": [
             {
@@ -65,7 +64,8 @@ def generate():
         ]
     }
 
-    return result  # Return the result as JSON
+    return data
+
 
 if __name__ == '__main__':
     app.run(debug=True)
