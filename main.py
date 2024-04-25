@@ -1,17 +1,17 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_cors import CORS, cross_origin
 
 load_dotenv()
+
 app = Flask(__name__)
 CORS(app)
 
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
 )
-
 
 def gen_list(serving_size, diet_details, budget):
     prompt = f'''
@@ -25,17 +25,23 @@ def gen_list(serving_size, diet_details, budget):
     If it is expected that there are more ingredients left over than what is included in the serving,
     suggest other dishes that can be made with the left over ingredients. 
 
-    Format the information using JSON lists in an order like so:
-
-    The dish chosen (the amount of servings)
-
-    The shopping list with quantities and prices
-
-    The total cost of the ingredients and the amount of the budget remaining
-
-    The recipe with measurements for the dish chosen
-
-    Suggestions for the leftover ingredients
+    Format the information in lists ordered like so with headers denoted by the format <HEADERS>:
+    ---
+    <DISH>
+        The dish chosen (the amount of servings)
+    --- 
+    <SHOP>
+        The shopping list with quantities and prices
+    ---
+    <COST>
+        The total cost of the ingredients and the amount of the budget remaining
+    ---
+    <RECIPE>
+        The recipe with measurements for the dish chosen
+    ---
+    <SUGGEST>
+        Suggestions for the leftover ingredients
+    ---
     '''
 
     chat_completion = client.chat.completions.create(
@@ -47,7 +53,6 @@ def gen_list(serving_size, diet_details, budget):
         ],
 
         model="gpt-3.5-turbo",
-        response_format={"type": "json_object"},
     )
 
     list = chat_completion.choices[0].message.content
@@ -60,9 +65,9 @@ def gen_list(serving_size, diet_details, budget):
 def hello():
     return "Success"
 
-@app.route('/generate', methods=['POST'])
+@app.route('/preset', methods=['POST'])
 @cross_origin()
-def generate():
+def preset():
     data = request.json
 
     data = {
@@ -108,7 +113,26 @@ def generate():
         ]
     }
 
-    return jsonify(data)
+    return (data)
+
+@app.route('/')
+@cross_origin()
+def home():
+    return render_template('index.html')
+
+@app.route('/generate', methods=['POST'])
+@cross_origin()
+def generate():
+    data = request.json
+
+    serving_size = data.get('serving_size')
+    diet_details = data.get('diet_details')
+    budget = data.get('budget')
+
+    # Process the data and generate a result
+    result = gen_list(serving_size, diet_details, budget)
+
+    return jsonify(result)
 
 if __name__ == '__main__':
     app.run(debug=True)

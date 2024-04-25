@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Shopping List</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+ 
+    <p>Generate a grocery list for a meal.</p>
+
+    <form id="form">
+        <label for="serving_size">Serving Size:</label><br>
+        <input type="text" id="serving_size" name="serving_size"><br>
+        <label for="diet_details">Diet Details:</label><br>
+        <input type="text" id="diet_details" name="diet_details"><br>
+        <label for="budget">Budget:</label><br>
+        <input type="text" id="budget" name="budget"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <pre><span id='display'></span></pre>
+
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>
