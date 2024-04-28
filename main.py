@@ -25,21 +25,18 @@ def gen_list(serving_size, diet_details, budget):
     If it is expected that there are more ingredients left over than what is included in the serving,
     suggest other dishes that can be made with the left over ingredients. 
 
-    Format the information in lists ordered like so with headers denoted by the format <HEADERS>:
-    ---
-    <DISH>
-        The dish chosen (the amount of servings)
+    Format the information ordered and divided with dashes like so:
+    
+        The name of the dish chosen
     --- 
-    <SHOP>
-        The shopping list with quantities and prices
+        The amount of servings in parentheses
     ---
-    <COST>
+        The shopping list with quantities and prices of each individual item
+    ---
         The total cost of the ingredients and the amount of the budget remaining
     ---
-    <RECIPE>
-        The recipe with measurements for the dish chosen
+        The recipe as a numbered list with measurements for the dish chosen
     ---
-    <SUGGEST>
         Suggestions for the leftover ingredients
     ---
     '''
@@ -117,8 +114,18 @@ def preset():
 
 @app.route('/')
 @cross_origin()
-def home():
+def index():
     return render_template('index.html')
+
+@app.route('/plan')
+@cross_origin()
+def plan():
+    return render_template('plan.html')
+
+@app.route('/shop.html')
+@cross_origin()
+def shop():
+    return render_template('shop.html')
 
 @app.route('/generate', methods=['POST'])
 @cross_origin()

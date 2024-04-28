@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    </head>
+    <body>
+        <div id="accordian">
+            <ul class="show-dropdown main-navbar">
+                <div class="selector-active"><div class="top"></div><div class="bottom"></div></div>
+                <li class ="active">
+                    <a href="{{ url_for('plan') }}"><i class="fas fa-tachometer-alt"></i>Plan</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('shop') }}"><i class="far fa-address-book"></i>Shop</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="far fa-clone"></i>Cook</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Suggestions</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="main-content">
+            <h1>Plan a Recipe</h1>
+            <form id="form">
+                <label for="serving_size">Serving Size:</label><br>
+                <input type="text" id="serving_size" name="serving_size"><br>
+                <label for="diet_details">Diet Details:</label><br>
+                <input type="text" id="diet_details" name="diet_details"><br>
+                <label for="budget">Budget:</label><br>
+                <input type="text" id="budget" name="budget"><br>
+                <input type="submit" value="Submit">
+            </form>
+
+            <pre><span id='dish'></span></pre>
+            <pre><span id='servings'></span></pre>
+            <pre><span id='shopping_list'></span></pre>
+            <pre><span id='cost'></span></pre>
+            <pre><span id='recipe'></span></pre>
+            <pre><span id='suggestions'></span></pre>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{url_for('static', filename='script.js')}}"></script>
+    </body>
+</html>
