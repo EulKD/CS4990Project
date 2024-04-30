@@ -28,7 +28,7 @@
                   <h2>Plan a Recipe</h2>
                   <hr>
                 </header>
-                <form id="form">
+                <!-- <form id="form">
                     <label for="serving_size">Serving Size:</label><br>
                     <input type="text" id="serving_size" name="serving_size" placeholder="How many.."><br>
                     <label for="diet_details">Diet Details:</label><br>
@@ -36,7 +36,33 @@
                     <label for="budget">Budget:</label><br>
                     <input type="text" id="budget" name="budget" placeholder="Desired budget.."><br>
                     <input type="submit" value="Submit">
-                </form>
+                </form> -->
+                <form>
+    
+                    <div class="group">      
+                      <input type="text" required id="serving_size" name="serving_size">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Serving Size</label>
+                    </div>
+                      
+                    <div class="group">      
+                      <input type="text" required id="diet_details" name="diet_details">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Diet Details</label>
+                    </div>
+                    
+                    <div class="group">      
+                        <input type="text" required id="budget" name="budget">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Budget</label>
+                    </div>
+
+                    <input type="submit" value="Submit">
+
+                  </form>
               </article>
               
               <article>

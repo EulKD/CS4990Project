@@ -31,11 +31,11 @@ def gen_list(serving_size, diet_details, budget):
     --- 
         The amount of servings in parentheses
     ---
-        The shopping list with quantities and prices of each individual item
+        The shopping list with quantities and prices of each individual item (do not add a title)
     ---
-        The total cost of the ingredients and the amount of the budget remaining
+        The total cost of the ingredients and the amount of the budget remaining on two different lines
     ---
-        The recipe as a numbered list with measurements for the dish chosen
+        The recipe as a numbered list with measurements for the dish chosen (do not add a title)
     ---
         Suggestions for the leftover ingredients
     ---
