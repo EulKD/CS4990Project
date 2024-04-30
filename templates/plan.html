@@ -22,24 +22,42 @@
             </ul>
         </div>
 
-        <div id="main-content">
-            <h1>Plan a Recipe</h1>
-            <form id="form">
-                <label for="serving_size">Serving Size:</label><br>
-                <input type="text" id="serving_size" name="serving_size"><br>
-                <label for="diet_details">Diet Details:</label><br>
-                <input type="text" id="diet_details" name="diet_details"><br>
-                <label for="budget">Budget:</label><br>
-                <input type="text" id="budget" name="budget"><br>
-                <input type="submit" value="Submit">
-            </form>
-
-            <pre><span id='dish'></span></pre>
-            <pre><span id='servings'></span></pre>
-            <pre><span id='shopping_list'></span></pre>
-            <pre><span id='cost'></span></pre>
-            <pre><span id='recipe'></span></pre>
-            <pre><span id='suggestions'></span></pre>
+        <div id="page-content">
+            <article>
+                <header>
+                  <h2>Plan a Recipe</h2>
+                </header>
+                <hr>
+                <form id="form">
+                    <label for="serving_size">Serving Size:</label><br>
+                    <input type="text" id="serving_size" name="serving_size" placeholder="How many.."><br>
+                    <label for="diet_details">Diet Details:</label><br>
+                    <input type="text" id="diet_details" name="diet_details" placeholder="Preferences or requirements.."><br>
+                    <label for="budget">Budget:</label><br>
+                    <input type="text" id="budget" name="budget" placeholder="Desired budget.."><br>
+                    <input type="submit" value="Submit">
+                </form>
+              </article>
+              
+              <article>
+                <header>
+                  <h2>Shopping List</h2>
+                </header>
+                <hr>
+                    <h3><span id='dish'></span></h3>
+                    <pre><span id='servings'></span></pre>
+                    <pre><span id='shopping_list'></span></pre>
+                    <pre><span id='cost'></span></pre>
+              </article>
+              
+              <article>
+                <header>
+                  <h2>Recipe</h2>
+                </header>
+                <hr>
+                    <pre><span id='recipe'></span></pre>
+                    <pre><span id='suggestions'></span></pre>
+              </article>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

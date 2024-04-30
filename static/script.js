@@ -6,12 +6,8 @@ const shopElem = document.getElementById('shopping_list');
 const costElem = document.getElementById('cost');
 const recipeElem = document.getElementById('recipe');
 const suggestElem = document.getElementById('suggestions');
-/**
- * This function is an event listener for form submission.
- * It prevents the default form submission and creates a new FormData object.
- * 
- * @param {Event} e - The event object.
- */
+
+// --------------form event listener and FormData obj----------
 formElem.addEventListener("submit", (e) => {
   // on form submission, prevent default
   e.preventDefault();
@@ -20,22 +16,12 @@ formElem.addEventListener("submit", (e) => {
   new FormData(formElem);
 });
 
-/**
- * Event listener for the 'formdata' event on the form element.
- * This event is fired after the form data has been constructed, but before the form is submitted.
- * 
- * @param {Event} e - The event object.
- */
+
+// --------------event listener for form data----------
 formElem.addEventListener("formdata", (e) => {
   console.log("formdata fired");
 
-  /**
-   * Extract the form data from the event object.
-   * 
-   * @type {string} serving_size - The serving size from the form data.
-   * @type {string} diet_details - The diet details from the form data.
-   * @type {string} budget - The budget from the form data.
-   */
+  // --------------extract form data----------
   const serving_size = e.formData.get("serving_size");
   const diet_details = e.formData.get("diet_details");
   const budget = e.formData.get("budget");
@@ -43,11 +29,7 @@ formElem.addEventListener("formdata", (e) => {
   console.log(serving_size, diet_details, budget);
   console.log(JSON.stringify({ serving_size, diet_details, budget }))
 
-  /**
-   * Submit the form data to the server using the fetch API.
-   * Generate the grocery shopping list using serving_size, diet_details, and budget as parameters.
-   * The server is expected to respond with JSON data.
-   */
+  // --------------submit form data and generate JSON data response----------
   fetch("http://127.0.0.1:5000/generate", {
     method: "POST",
     headers: {
@@ -62,6 +44,7 @@ formElem.addEventListener("formdata", (e) => {
     })
 });
 
+// --------------split data into different sections----------
 function section(data) {
   const sections = data.split('---');
   console.log(sections)

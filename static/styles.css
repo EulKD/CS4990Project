@@ -6,6 +6,7 @@ body{
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 i {
 	margin-right: 10px;
@@ -117,3 +118,49 @@ h6{
 	bottom: -25px;
 	left: -25px;
 }
+
+#page-content {
+
+	min-block-size: 100%;
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(30ch, 1fr));
+    padding: 5vmin;
+	gap: 5px;
+}
+
+article {
+    display: grid;
+    gap: 2ch;
+	align-content: flex-start;
+}
+
+html {
+	block-size: 100%;
+}
+
+header {
+	display: grid;
+	align-items: center;
+	height: 50px;
+}
+
+hr {
+	height: 2px;
+	width: 10ch;
+	border: none;
+	background: LinkText;
+}
+
+article-content {
+	display: grid;
+	align-items: start;
+}
+
+pre {
+	max-inline-size: 40ch;
+	text-wrap: balance;
+	line-height: 1.5;
+	overflow: auto;
+	font-family: 'Roboto', sans-serif;
+	}
