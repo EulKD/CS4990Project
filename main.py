@@ -25,6 +25,7 @@ def gen_list(serving_size, diet_details, budget):
     If it is expected that there are more ingredients left over than what is included in the serving,
     suggest other dishes that can be made with the left over ingredients. 
 
+    Do not include any spaces before or after each new line.
     Format the information ordered and divided with dashes like so:
     
         The name of the dish chosen
