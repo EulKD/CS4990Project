@@ -8,67 +8,75 @@ const recipeElem = document.getElementById('recipe');
 const suggestElem = document.getElementById('suggestions');
 
 // --------------form event listener and FormData obj----------
-formElem.addEventListener("submit", (e) => {
-  // on form submission, prevent default
-  e.preventDefault();
+var form = document.querySelector('form');
 
-  // construct a FormData object, which fires the formdata event
-  new FormData(formElem);
-});
-
-
-// --------------event listener for form data----------
-formElem.addEventListener("formdata", (e) => {
-  console.log("formdata fired");
-
-  // --------------extract form data----------
-  const serving_size = e.formData.get("serving_size");
-  const diet_details = e.formData.get("diet_details");
-  const budget = e.formData.get("budget");
-
-  console.log(serving_size, diet_details, budget);
-  console.log(JSON.stringify({ serving_size, diet_details, budget }))
-
-  // --------------submit form data and generate JSON data response----------
-  fetch("http://127.0.0.1:5000/generate", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ serving_size, diet_details, budget }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        section(data);
+if (form !== null) {
+  formElem.addEventListener("submit", (e) => {
+    // on form submission, prevent default
+    e.preventDefault();
+  
+    // construct a FormData object, which fires the formdata event
+    new FormData(formElem);
+  });
+  
+  
+  // --------------event listener for form data----------
+  formElem.addEventListener("formdata", (e) => {
+    console.log("formdata fired");
+  
+    // --------------extract form data----------
+    const serving_size = e.formData.get("serving_size");
+    const diet_details = e.formData.get("diet_details");
+    const budget = e.formData.get("budget");
+  
+    console.log(serving_size, diet_details, budget);
+    console.log(JSON.stringify({ serving_size, diet_details, budget }))
+  
+    // --------------submit form data and generate JSON data response----------
+    fetch("http://127.0.0.1:5000/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ serving_size, diet_details, budget }),
     })
-});
-
-// --------------split data into different sections----------
-function section(data) {
-  const sections = data.split('---');
-  console.log(sections)
-
-  const dish = sections[0].trim();
-  dishElem.innerText = dish;
-  console.log(dish)
-
-  const servings = sections[1].trim();
-  servingsElem.innerHTML = servings;
-
-  const shop = sections[2].trim();
-  shopElem.innerText = shop;
-
-  const cost = sections[3].trim();
-  costElem.innerHTML = cost;
-
-  const recipe = sections[4].trim();
-  recipeElem.innerHTML = recipe;
-
-  const suggest = sections[5].trim();
-  suggestElem.innerHTML = suggest;
+      .then((response) => response.json())
+      .then((data) => {
+          console.log(data);
+          section(data);
+      })
+  });
+  
+  // --------------split data into different sections----------
+  function section(data) {
+    const sections = data.split('---');
+    console.log(sections)
+  
+    const dish = sections[0].trim();
+    dishElem.innerHTML = dish;
+    sessionStorage.setItem("dish", dish);
+  
+    const servings = sections[1].trim();
+    servingsElem.innerHTML = servings;
+    sessionStorage.setItem("servings", servings);
+  
+    const shop = sections[2].trim();
+    shopElem.innerHTML = shop;
+    sessionStorage.setItem("shop", shop);
+  
+    const cost = sections[3].trim();
+    costElem.innerHTML = cost;
+    sessionStorage.setItem("cost", cost);
+  
+    const recipe = sections[4].trim();
+    recipeElem.innerHTML = recipe;
+    sessionStorage.setItem("recipe", recipe);
+  
+    const suggest = sections[5].trim();
+    suggestElem.innerHTML = suggest;
+    sessionStorage.setItem("suggest", suggest);
+  }
 }
-
 // ---------vertical-menu with-inner-menu-active-animation-----------
 
 var tabsVerticalInner = $('#accordian');
@@ -101,16 +109,45 @@ $("#accordian").on("click","li",function(e){
 
 
 // --------------add active class-on another-page move----------
-jQuery(document).ready(function($){
-  // Get current path and find target link
+$(function() {
   var path = window.location.pathname.split("/").pop();
 
   // Account for home page with empty path
   if ( path == '' ) {
-    path = 'plan';
+    path = 'plan.html';
   }
 
   var target = $('#accordian ul li a[href="'+path+'"]');
   // Add active class to target link
   target.parent().addClass('active');
 });
+
+// --------------loading generated elements on other tabs------------------
+window.onload = function() {
+  const dish = sessionStorage.getItem("dish");
+  const servings = sessionStorage.getItem("servings")
+  const shop = sessionStorage.getItem("shop")
+  const cost = sessionStorage.getItem("cost")
+  const recipe = sessionStorage.getItem("recipe")
+  const suggest = sessionStorage.getItem("suggest")
+
+  if (dish) {
+    dishElem.innerHTML = dish;
+  }
+  if (servings) {
+    servingsElem.innerHTML = servings;
+  }
+  if (shop) {
+    shopElem.innerHTML = shop;
+  }
+  if (cost) {
+    costElem.innerHTML = cost;
+  }
+  if (recipe) {
+    recipeElem.innerHTML = recipe;
+  }
+  if (suggest) {
+    suggestElem.innerHTML = suggest;
+  }
+};
+

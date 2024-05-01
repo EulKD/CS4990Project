@@ -14,15 +14,15 @@
                     <a href="{{ url_for('shop') }}"><i class="far fa-address-book"></i>Shop</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);"><i class="far fa-clone"></i>Cook</a>
+                    <a href="{{ url_for('cook') }}"><i class="far fa-clone"></i>Cook</a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Suggestions</a>
+                    <a href="{{ url_for('suggestions') }}"><i class="far fa-calendar-alt"></i>Suggestions</a>
                 </li>
             </ul>
         </div>
 
-        <div id="page-content">
+        <div id="plan-content">
             <article>
                 <header>
                   <h2>Plan a Recipe</h2>
@@ -67,7 +67,7 @@
                 </header>
                 <article-content>
                     <h3><span id='dish'></span></h3>
-                    <pre><span id='servings'></span></pre>
+                    <pre><span id='servings'>Plan a recipe to start shopping</span></pre>
                     <pre><span id='shopping_list'></span></pre>
                     <pre><span id='cost'></span></pre>
                 </article-content>
@@ -78,7 +78,7 @@
                   <h2>Recipe</h2>
                   <hr>
                 </header>
-                    <pre><span id='recipe'></span></pre>
+                    <pre><span id='recipe'>Plan a recipe to start cooking</span></pre>
                     <pre><span id='suggestions'></span></pre>
               </article>
         </div>

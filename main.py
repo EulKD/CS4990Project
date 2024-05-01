@@ -19,14 +19,15 @@ def gen_list(serving_size, diet_details, budget):
     The meal must be {diet_details}.
     The budget for the ingredients is {budget}.
     With this information, choose an appropriate dish and make one shopping list that shows each ingredient
-    needed for the dish , each ingredient's cost, and the overall cost compared to the budget.
+    needed for the dish and each ingredient's cost. After the list include the overall cost compared to the budget.
     Keep in mind if more units of each ingredient must be bought for larger servings.
     Then include the recipe for the chosen dish.
     If it is expected that there are more ingredients left over than what is included in the serving,
     suggest other dishes that can be made with the left over ingredients. 
 
+    Separate the shopping list and cost comparison.
     Do not include any spaces before or after each new line.
-    Format the information ordered and divided with dashes like so:
+    Format the information ordered and divided with dashes into 6 sections like so:
     
         The name of the dish chosen
     --- 
@@ -63,62 +64,12 @@ def gen_list(serving_size, diet_details, budget):
 def hello():
     return "Success"
 
-@app.route('/preset', methods=['POST'])
-@cross_origin()
-def preset():
-    data = request.json
-
-    data = {
-        "dish": "Oatmeal with Fruit Toppings (4 servings)",
-        "shopping_list": [
-            {
-                "ingredient": "Rolled oats",
-                "quantity": "2 cups",
-                "price_per_unit": "$2",
-                "total_price": "$4"
-            },
-            {
-                "ingredient": "Milk (or alternative)",
-                "quantity": "2 cups",
-                "price_per_unit": "$3",
-                "total_price": "$6"
-            },
-            {
-                "ingredient": "Banana",
-                "quantity": "2",
-                "price_per_unit": "$0.50",
-                "total_price": "$1"
-            },
-            {
-                "ingredient": "Berries (e.g. blueberries, strawberries)",
-                "quantity": "1 cup",
-                "price_per_unit": "$3",
-                "total_price": "$3"
-            },
-            {
-                "ingredient": "Honey",
-                "quantity": "2 tbsp",
-                "price_per_unit": "$1",
-                "total_price": "$1"
-            }
-        ],
-        "total_cost": "$15",
-        "budget_remaining": "$10",
-        "recipe": "1. In a saucepan, combine rolled oats and milk. Cook over medium heat until oats are creamy.\n2. Slice the banana and wash the berries.\n3. Serve the oatmeal in bowls, top with banana slices, berries, and a drizzle of honey.",
-        "leftover_suggestions": [
-            "Make smoothies with leftover berries, bananas, and milk.",
-            "Use leftover oats to make oatmeal cookies or granola bars."
-        ]
-    }
-
-    return (data)
-
 @app.route('/')
 @cross_origin()
 def index():
-    return render_template('index.html')
+    return render_template('plan.html')
 
-@app.route('/plan')
+@app.route('/plan.html')
 @cross_origin()
 def plan():
     return render_template('plan.html')
@@ -127,6 +78,16 @@ def plan():
 @cross_origin()
 def shop():
     return render_template('shop.html')
+
+@app.route('/cook.html')
+@cross_origin()
+def cook():
+    return render_template('cook.html')
+
+@app.route('/suggestions.html')
+@cross_origin()
+def suggestions():
+    return render_template('suggestions.html')
 
 @app.route('/generate', methods=['POST'])
 @cross_origin()

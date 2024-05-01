@@ -10,10 +10,10 @@
                 <li>
                     <a href="{{ url_for('plan') }}"><i class="fas fa-tachometer-alt"></i>Plan</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="{{ url_for('shop') }}"><i class="far fa-address-book"></i>Shop</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="{{ url_for('cook') }}"><i class="far fa-clone"></i>Cook</a>
                 </li>
                 <li>
@@ -23,12 +23,9 @@
         </div>
 
         <div id="page-content">
-            <h1>Shopping List</h1>
+            <h1>Cooking</h1>
             <hr>
-            <h3><span id='dish'></span></h3>
-            <pre><span id='servings'>Plan a recipe to start shopping</span></pre>
-            <pre><span id='shopping_list'></span></pre>
-            <pre><span id='cost'></span></pre>
+            <pre><span id='recipe'>Plan a recipe to start cooking</span></pre>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
