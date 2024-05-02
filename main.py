@@ -19,23 +19,22 @@ def gen_list(serving_size, diet_details, budget):
     The meal must be {diet_details}.
     The budget for the ingredients is {budget}.
     With this information, choose an appropriate dish and make one shopping list that shows each ingredient
-    needed for the dish and each ingredient's cost. After the list include the overall cost compared to the budget.
+    needed for the dish and each ingredient's cost.
     Keep in mind if more units of each ingredient must be bought for larger servings.
     Then include the recipe for the chosen dish.
     If it is expected that there are more ingredients left over than what is included in the serving,
     suggest other dishes that can be made with the left over ingredients. 
 
-    Separate the shopping list and cost comparison.
     Do not include any spaces before or after each new line.
-    Format the information ordered and divided with dashes into 6 sections like so:
-    
+    Format the information ordered into SIX different sections split by dashes like so (you MUST include all SIX sections):
+    ---
         The name of the dish chosen
     --- 
-        The amount of servings in parentheses
+        The amount of servings in parentheses like so (Servings: number of servings)
     ---
-        The shopping list with quantities and prices of each individual item (do not add a title)
+        The shopping list with quantities and prices of each INDIVIDUAL item (DO NOT add a title and DO NOT include price comparison)
     ---
-        The total cost of the ingredients and the amount of the budget remaining on two different lines
+        The price comparison of the total cost of the ingredients and the amount of the budget remaining on two different lines
     ---
         The recipe as a numbered list with measurements for the dish chosen (do not add a title)
     ---

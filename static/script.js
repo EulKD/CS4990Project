@@ -43,6 +43,7 @@ if (form !== null) {
       .then((response) => response.json())
       .then((data) => {
           console.log(data);
+          window.sessionStorage.setItem("data", data)
           section(data);
       })
   });
@@ -52,33 +53,33 @@ if (form !== null) {
     const sections = data.split('---');
     console.log(sections)
   
-    const dish = sections[0].trim();
+    const dish = sections[1].trim();
     dishElem.innerHTML = dish;
     sessionStorage.setItem("dish", dish);
   
-    const servings = sections[1].trim();
+    const servings = sections[2].trim();
     servingsElem.innerHTML = servings;
     sessionStorage.setItem("servings", servings);
   
-    const shop = sections[2].trim();
+    const shop = sections[3].trim();
     shopElem.innerHTML = shop;
     sessionStorage.setItem("shop", shop);
   
-    const cost = sections[3].trim();
+    const cost = sections[4].trim();
     costElem.innerHTML = cost;
     sessionStorage.setItem("cost", cost);
   
-    const recipe = sections[4].trim();
+    const recipe = sections[5].trim();
     recipeElem.innerHTML = recipe;
     sessionStorage.setItem("recipe", recipe);
   
-    const suggest = sections[5].trim();
+    const suggest = sections[6].trim();
     suggestElem.innerHTML = suggest;
     sessionStorage.setItem("suggest", suggest);
   }
 }
-// ---------vertical-menu with-inner-menu-active-animation-----------
 
+// ---------vertical-menu with-inner-menu-active-animation-----------
 var tabsVerticalInner = $('#accordian');
 var selectorVerticalInner = $('#accordian').find('li').length;
 var activeItemVerticalInner = tabsVerticalInner.find('.active');
@@ -112,7 +113,7 @@ $("#accordian").on("click","li",function(e){
 $(function() {
   var path = window.location.pathname.split("/").pop();
 
-  // Account for home page with empty path
+  //Account for home page with empty path
   if ( path == '' ) {
     path = 'plan.html';
   }
@@ -123,7 +124,10 @@ $(function() {
 });
 
 // --------------loading generated elements on other tabs------------------
-window.onload = function() {
+// window.onload = function() {
+// };
+
+document.addEventListener("DOMContentLoaded", function() {
   const dish = sessionStorage.getItem("dish");
   const servings = sessionStorage.getItem("servings")
   const shop = sessionStorage.getItem("shop")
@@ -131,23 +135,22 @@ window.onload = function() {
   const recipe = sessionStorage.getItem("recipe")
   const suggest = sessionStorage.getItem("suggest")
 
-  if (dish) {
+  if (dishElem) {
     dishElem.innerHTML = dish;
   }
-  if (servings) {
+  if (servingsElem) {
     servingsElem.innerHTML = servings;
   }
-  if (shop) {
+  if (shopElem) {
     shopElem.innerHTML = shop;
   }
-  if (cost) {
+  if (costElem) {
     costElem.innerHTML = cost;
   }
-  if (recipe) {
+  if (recipeElem) {
     recipeElem.innerHTML = recipe;
   }
-  if (suggest) {
+  if (suggestElem) {
     suggestElem.innerHTML = suggest;
   }
-};
-
+}); 
