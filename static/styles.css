@@ -175,6 +175,7 @@ hr {
 	width: 10ch;
 	border: none;
 	background: LinkText;
+	margin-bottom: 10px;
 }
 
 article-content {
@@ -272,7 +273,7 @@ input:-webkit-autofill:active {
 .button-57 {
 	position: relative;
 	overflow: hidden;
-	border: 1px solid #5161ce;
+	border: 1px solid #757575;
 	color: #18181a;
 	display: inline-block;
 	font-size: 15px;

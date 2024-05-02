@@ -115,7 +115,7 @@ $(function() {
 
   //Account for home page with empty path
   if ( path == '' ) {
-    path = 'plan.html';
+    path = 'plan';
   }
 
   var target = $('#accordian ul li a[href="'+path+'"]');
@@ -135,22 +135,22 @@ document.addEventListener("DOMContentLoaded", function() {
   const recipe = sessionStorage.getItem("recipe")
   const suggest = sessionStorage.getItem("suggest")
 
-  if (dishElem) {
+  if (dishElem && dish) {
     dishElem.innerHTML = dish;
   }
-  if (servingsElem) {
+  if (servingsElem && servings) {
     servingsElem.innerHTML = servings;
   }
-  if (shopElem) {
+  if (shopElem && shop) {
     shopElem.innerHTML = shop;
   }
-  if (costElem) {
+  if (costElem && cost) {
     costElem.innerHTML = cost;
   }
-  if (recipeElem) {
+  if (recipeElem && recipe) {
     recipeElem.innerHTML = recipe;
   }
-  if (suggestElem) {
+  if (suggestElem && suggest) {
     suggestElem.innerHTML = suggest;
   }
 }); 

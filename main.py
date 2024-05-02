@@ -68,22 +68,22 @@ def hello():
 def index():
     return render_template('plan.html')
 
-@app.route('/plan.html')
+@app.route('/plan')
 @cross_origin()
 def plan():
     return render_template('plan.html')
 
-@app.route('/shop.html')
+@app.route('/shop')
 @cross_origin()
 def shop():
     return render_template('shop.html')
 
-@app.route('/cook.html')
+@app.route('/cook')
 @cross_origin()
 def cook():
     return render_template('cook.html')
 
-@app.route('/suggestions.html')
+@app.route('/suggestions')
 @cross_origin()
 def suggestions():
     return render_template('suggestions.html')
