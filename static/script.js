@@ -124,8 +124,6 @@ $(function() {
 });
 
 // --------------loading generated elements on other tabs------------------
-// window.onload = function() {
-// };
 
 document.addEventListener("DOMContentLoaded", function() {
   const dish = sessionStorage.getItem("dish");

@@ -191,7 +191,7 @@ pre {
 	font-family: 'Roboto', sans-serif;
 }
 
-/* forms styling and animation */
+/* FORMS STYLING AND ANIMATION */
 input {
 	font-size: 18px;
 	padding: 10px 10px 5px 5px;
@@ -206,7 +206,7 @@ input:focus {
 	outline: none;
 }
 
-/* LABEL ======================================= */
+/* LABEL */
 label {
 	color: #999;
 	font-size: 18px;
@@ -228,7 +228,7 @@ input:valid~label {
 	color: #5161ce;
 }
 
-/* BOTTOM BARS ================================= */
+/* BOTTOM BARS */
 .bar {
 	position: relative;
 	display: block;
@@ -256,7 +256,7 @@ input:valid~label {
 	right: 50%;
 }
 
-/* active state */
+/* ACTIVE STATE */
 input:focus~.bar:before,
 input:focus~.bar:after {
 	width: 50%;
@@ -269,7 +269,7 @@ input:-webkit-autofill:active {
 	-webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-/* button */
+/* BUTTON */
 .button-57 {
 	position: relative;
 	overflow: hidden;

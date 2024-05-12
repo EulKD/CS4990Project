@@ -13,6 +13,7 @@ client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),
 )
 
+# prompt for openAI api
 def gen_list(serving_size, diet_details, budget):
     prompt = f'''
     Create a grocery shopping list for a breakfast with serving sizes for {serving_size}.
@@ -25,7 +26,7 @@ def gen_list(serving_size, diet_details, budget):
     If it is expected that there are more ingredients left over than what is included in the serving,
     suggest other dishes that can be made with the left over ingredients. 
 
-    Do not include any spaces before or after each new line.
+    DO NOT include any spaces before or after each new line.
     Format the information ordered into SIX different sections split by dashes like so (you MUST include all SIX sections):
     ---
         The name of the dish chosen
@@ -42,6 +43,7 @@ def gen_list(serving_size, diet_details, budget):
     ---
     '''
 
+# return openAI message
     chat_completion = client.chat.completions.create(
         messages=[
             {
@@ -57,7 +59,7 @@ def gen_list(serving_size, diet_details, budget):
 
     return list
 
-
+# Render pages
 @app.route('/test')
 @cross_origin()
 def hello():
@@ -90,6 +92,8 @@ def suggestions():
 
 @app.route('/generate', methods=['POST'])
 @cross_origin()
+
+# function to input params and call generation
 def generate():
     data = request.json
 
