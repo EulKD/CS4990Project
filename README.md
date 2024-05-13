@@ -1,2 +1,2 @@
 # CS4990Project
-Using ChatGPT API to produce an application that offers practical, user-friendly solution.
+This project is a flexible recipe and shopping list generator that utilizes the openAI API to generate results based on the user's needs and requests.
